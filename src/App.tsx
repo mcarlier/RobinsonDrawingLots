@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Home from './Home';
+import AddPlayer from './AddPlayer';
+import PlayerMatch from './PlayerMatch';
 
-const App: React.FC = () => {
+
+ 
+function AppRouter() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/addPlayer">Add a player!</Link>
+            </li>
+            <li>
+              <Link to="/playerMatch">See player Match</Link>
+            </li>
+          </ul>
+        </nav>
+        <Route path="/" exact component={Home} />
+        <Route path="/addPlayer" component={AddPlayer} />
+        <Route path="/playerMatch" component={PlayerMatch} />
+
+      </div>
+    </Router>
   );
 }
-
-export default App;
+ 
+export default AppRouter;
