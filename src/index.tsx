@@ -1,5 +1,5 @@
 import * as React from "react";
-import { render } from "react-dom";
+import ReactDOM, { render } from "react-dom";
 import { Provider } from "react-redux";
 import configureStore from "./store";
 
@@ -14,6 +14,6 @@ const Root = () => (
   </Provider>
 );
 
-//ReactDOM.render(<Root />, document.getElementById('root'));
+ReactDOM.render(<Root />, document.getElementById('root'));
 
-render(<Root />, document.getElementById("root"));
+//render(<Root />, document.getElementById("root"));

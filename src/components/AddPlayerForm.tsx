@@ -106,6 +106,5 @@ class AddPlayerForm extends React.Component<AddPlayerFormProps, { name: string, 
       );
     }
 }
- 
 
 export default AddPlayerForm;
