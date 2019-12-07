@@ -6,7 +6,7 @@ function Home() {
         <div> 
             <h1>Welcome home</h1>
             <div> 
-            <Link to="/addPlayer"> Add player</Link>
+            <Link to="/AddPlayerForm"> Add player</Link>
             </div>
             <div> 
                 <Link to="/playerMatch">See player Match</Link>
