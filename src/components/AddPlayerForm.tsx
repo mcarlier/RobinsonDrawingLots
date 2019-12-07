@@ -5,7 +5,7 @@ import { Player } from "../store/draw/types"
 
 interface AddPlayerFormProps {
     players: Player[];
-    addPlayer: (name: string, spouseId:number | undefined) => void;
+    addPlayer: (name: string, haveSpouse:boolean, spouseId:number | undefined) => void;
   }
 
 class AddPlayerForm extends React.Component<AddPlayerFormProps, { name: string, haveSpouse: boolean, spouseId:number | undefined}>{
@@ -17,6 +17,7 @@ class AddPlayerForm extends React.Component<AddPlayerFormProps, { name: string, 
             spouseId: undefined
             };
         this.handleChange = this.handleChange.bind(this);
+        this.handleSelectChange = this.handleSelectChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
       }
 
@@ -35,17 +36,22 @@ class AddPlayerForm extends React.Component<AddPlayerFormProps, { name: string, 
             } 
          }
       }
+      handleSelectChange(event: React.ChangeEvent<HTMLSelectElement>) {
+        let n = Number(event.target.value)
+        if(!Number.isNaN(n)){
+            this.setState({spouseId: n})
+        }else{
+            this.setState({spouseId: undefined})
+        }
+      }
 
       handleSubmit(event: { preventDefault: () => void; }) {
         if(this.state.name){
             alert('A name was submitted: ' + this.state.name + ("\n"));
-            this.props.addPlayer(this.state.name,this.state.spouseId)
-            console.log(this.props.players)
-            
-
+            this.setState({spouseId: undefined})
+            this.props.addPlayer(this.state.name,this.state.haveSpouse,this.state.spouseId)          
         }else{
             alert('Please enter your name before submit');
-
         }
         event.preventDefault();
       }
@@ -77,12 +83,17 @@ class AddPlayerForm extends React.Component<AddPlayerFormProps, { name: string, 
                     <div>
                         <label>
                             Who are you married to ?
-                            <select >
+                            <select name="selectSpouse" onChange={this.handleSelectChange}>
                                 <option value="notSet">not Set</option>
-                                <option value="lime">Lime</option>
-                                <option value="coconut">Coconut</option>
-                                <option value="mango">Mango</option>
-                            </select>
+                                {
+                                this.props.players.map(p => {
+                                    if(p.haveSpouse && p.spouseId === undefined){
+                                        return <option key={p.id} value={p.id}>{p.name}</option>
+                                    }
+                                    return null
+                                }
+                                )};
+                            </select >
                         </label>
                     </div>
                 }

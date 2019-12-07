@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { AppState } from "../store";
 
@@ -18,9 +18,8 @@ interface AppProps {
 
 class App extends React.Component<AppProps>{
 
-  addPlayer = (name: string, spouseId:number | undefined) => {
-    this.props.addPlayer(name,spouseId)
-    console.log(this.props.playersState.players)
+  addPlayer = (name: string, haveSpouse:boolean, spouseId:number | undefined) => {
+    this.props.addPlayer(name,haveSpouse,spouseId)
   };
   render() {
     return (

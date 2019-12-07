@@ -1,6 +1,7 @@
 export interface Player {
     readonly id: number;
     readonly name: String;
+    haveSpouse: boolean;
     spouseId: number | undefined;
     matchId: number | undefined;
   }
@@ -16,6 +17,7 @@ export const PERFORM_DRAW = "PERFORM_DRAW";
   interface addPlayerAction {
     type: typeof ADD_PLAYER;
     name: String,
+    haveSpouse: boolean,
     spouseId: number | undefined
   }
   

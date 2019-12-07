@@ -19,7 +19,12 @@ import {
               id: state.players.length,
               name: action.name,
               spouseId: action.spouseId,
+              haveSpouse: action.haveSpouse,
               matchId: undefined
+            }
+          var spouse = state.players.find(i => i.id === action.spouseId);
+          if(spouse !== undefined){
+            spouse.spouseId = p.id
             }
         return {
             players: [...state.players, p]
