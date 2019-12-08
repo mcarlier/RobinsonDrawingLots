@@ -1,4 +1,4 @@
-import { ADD_PLAYER, PERFORM_DRAW } from "./types";
+import { ADD_PLAYER, PERFORM_DRAW, RESET_DRAW } from "./types";
 
 export function addPlayer(name: string, haveSpouse:boolean, spouseId:number | undefined) {
   return {
@@ -9,8 +9,14 @@ export function addPlayer(name: string, haveSpouse:boolean, spouseId:number | un
   };
 }
 
-export function PerformDrawAction() {
+export function performDrawAction() {
   return {
     type: PERFORM_DRAW
+  };
+}
+
+export function resetDrawAction() {
+  return {
+    type: RESET_DRAW
   };
 }
