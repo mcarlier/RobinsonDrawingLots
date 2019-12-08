@@ -1,14 +1,17 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Link } from 'react-router-dom'
-import { Player } from "../store/draw/types"
+import { Player, drawState } from "../store/draw/types"
+import { addPlayerAction } from "../store/draw/actions";
+import { AppState } from "../store";
 
 
 interface AddPlayerFormProps {
-    players: Player[];
-    addPlayer: (name: string, haveSpouse:boolean, spouseId:number | undefined) => void;
+    drawState: drawState;
+    addPlayerAction: typeof addPlayerAction;
   }
 
-class AddPlayerForm extends React.Component<AddPlayerFormProps, { name: string, haveSpouse: boolean, spouseId:number | undefined}>{
+class AddPlayerForm extends React.Component<AddPlayerFormProps, { name: string, haveSpouse: boolean, spouseId:string | undefined}>{
     constructor(props: AddPlayerFormProps) {
         super(props);
         this.state = {
@@ -37,11 +40,11 @@ class AddPlayerForm extends React.Component<AddPlayerFormProps, { name: string, 
          }
       }
       handleSelectChange(event: React.ChangeEvent<HTMLSelectElement>) {
-        let n = Number(event.target.value)
-        if(!Number.isNaN(n)){
-            this.setState({spouseId: n})
-        }else{
+        if(event.target.value === "null"){
             this.setState({spouseId: undefined})
+        }else{
+            this.setState({spouseId: event.target.value})
+
         }
       }
 
@@ -49,13 +52,15 @@ class AddPlayerForm extends React.Component<AddPlayerFormProps, { name: string, 
         if(this.state.name){
             alert('A name was submitted: ' + this.state.name + ("\n"));
             this.setState({spouseId: undefined})
-            this.props.addPlayer(this.state.name,this.state.haveSpouse,this.state.spouseId)          
+            if(!this.props.drawState.isDrawPerformed){
+                this.props.addPlayerAction(this.state.name,this.state.haveSpouse,this.state.spouseId)
+              }         
         }else{
             alert('Please enter your name before submit');
         }
         event.preventDefault();
       }
-      
+
     render() {
     return (
         <div> 
@@ -84,9 +89,9 @@ class AddPlayerForm extends React.Component<AddPlayerFormProps, { name: string, 
                         <label>
                             Who are you married to ?
                             <select name="selectSpouse" onChange={this.handleSelectChange}>
-                                <option value="notSet">not Set</option>
+                                <option value="null">not Set</option>
                                 {
-                                this.props.players.map(p => {
+                                this.props.drawState.players.map(p => {
                                     if(p.haveSpouse && p.spouseId === undefined){
                                         return <option key={p.id} value={p.id}>{p.name}</option>
                                     }
@@ -107,4 +112,11 @@ class AddPlayerForm extends React.Component<AddPlayerFormProps, { name: string, 
     }
 }
 
-export default AddPlayerForm;
+const mapStateToProps = (state: AppState) => ({
+    drawState: state.draw
+  });
+  
+export default connect(
+    mapStateToProps,
+  { addPlayerAction}
+)(AddPlayerForm);

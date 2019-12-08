@@ -1,9 +1,9 @@
 export interface Player {
-    readonly id: number;
+    readonly id: string;
     readonly name: string;
     haveSpouse: boolean;
-    spouseId: number | undefined;
-    matchId: number | undefined;
+    spouseId: string | undefined;
+    matchId: string | undefined;
   }
 
   export interface drawState{
@@ -12,24 +12,28 @@ export interface Player {
   }
   
 // Describing the different ACTION NAMES available
-export const ADD_PLAYER = "ADD_PLAYER";
-export const PERFORM_DRAW = "PERFORM_DRAW";
-export const RESET_DRAW = "RESET_DRAW";
+export enum DRAW_ACTION_TYPE {
+  ADD_PLAYER = 'ADD_PLAYER',
+  PERFORM_DRAW = 'PERFORM_DRAW',
+  RESET_DRAW = 'RESET_DRAW',
+}
 
   interface addPlayerAction {
-    type: typeof ADD_PLAYER;
-    name: string,
-    haveSpouse: boolean,
-    spouseId: number | undefined
+    type: typeof DRAW_ACTION_TYPE.ADD_PLAYER;
+    data:{
+      name: string,
+      haveSpouse: boolean,
+      spouseId: string | undefined
+    }
   }
   
   interface PerformDrawAction {
-    type: typeof PERFORM_DRAW;
+    type: typeof DRAW_ACTION_TYPE.PERFORM_DRAW;
 
   }
 
   interface ResetDrawAction {
-    type: typeof RESET_DRAW;
+    type: typeof DRAW_ACTION_TYPE.RESET_DRAW;
 
   }
   
