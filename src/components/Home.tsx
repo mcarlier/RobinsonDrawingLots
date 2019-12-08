@@ -1,16 +1,14 @@
 import React from "react";
 import PerformDrawComponent from "./PerformDrawComponent";
 import DisplayDrawComponent from "./DisplayDrawComponent";
-
+import { connect } from "react-redux";
+import { AppState } from "../store";
 
 interface HomeProps {
     isDrawPerformed: boolean;
   }
-class Home extends React.Component<HomeProps, {name: string , match_name: string}>{
-    constructor(props: HomeProps) {
-        super(props);
-      }
 
+class Home extends React.Component<HomeProps>{
     render() {
         if(!this.props.isDrawPerformed){
             return <PerformDrawComponent/>
@@ -19,4 +17,11 @@ class Home extends React.Component<HomeProps, {name: string , match_name: string
         }
     }
 }
-export default Home;
+const mapStateToProps = (state: AppState) => ({
+    isDrawPerformed: state.draw.isDrawPerformed
+  });
+export default connect(
+mapStateToProps,
+{}
+)(Home);
+  

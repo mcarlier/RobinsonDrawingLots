@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { resetDrawAction } from "../store/draw/actions";
 import { AppState } from "../store";
-import { drawState, Player } from "../store/draw/types";
+import { drawState } from "../store/draw/types";
 import { getMatchPlayerName } from "../utils/PlayerArrayUtils";
 
 
@@ -37,13 +37,19 @@ class DisplayDrawComponent extends React.Component<DisplayDrawComponentProps,{na
         }
         event.preventDefault();
       }
-
+    componentDidMount(){
+        if (this.props.drawState.drawIntegrity === false) {
+            alert("Due to low participation we could not follow all the rules to make the draw.")          
+        }
+    }
 
    
   render() {
+
     return (
+
         <div> 
-        {console.log(this.props.drawState.players)}
+
         <form onSubmit={this.handleSubmit}>
             <div>
                 <label>

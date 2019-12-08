@@ -2,10 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 import { performDrawAction } from "../store/draw/actions";
 import { Link } from 'react-router-dom'
+import { AppState } from "../store";
 
 
 interface PerformDrawComponentProps {
     performDrawAction: typeof performDrawAction;
+    players_count:number;
   }
 
 class PerformDrawComponent extends React.Component<PerformDrawComponentProps>{
@@ -14,7 +16,19 @@ class PerformDrawComponent extends React.Component<PerformDrawComponentProps>{
         this.handleClick = this.handleClick.bind(this);
       }
     handleClick(event: React.MouseEvent<HTMLButtonElement>) {
-        this.props.performDrawAction()
+      switch(this.props.players_count ) {
+        case 0:
+          alert("Everybody needs to register before performing a draw")
+
+          break;
+        case 1:
+          alert("There is currently only one participant. There need to be more for a draw to be performed")
+
+          break;
+        default:
+          this.props.performDrawAction()
+
+      } 
     }
    
   render() {
@@ -32,8 +46,10 @@ class PerformDrawComponent extends React.Component<PerformDrawComponentProps>{
         </div>)
   }
 }
- 
+const mapStateToProps = (state: AppState) => ({
+  players_count: state.draw.players.length
+});
 export default connect(
-  null,
+  mapStateToProps,
   { performDrawAction}
 )(PerformDrawComponent);

@@ -4,11 +4,13 @@ import {
     DRAW_ACTION_TYPE,
     DrawActionTypes,
   } from "./types";
+import { performDraw } from "../../utils/PlayerArrayUtils";
 const uuidv4 = require('uuid/v4');
   
   const initialState: drawState = {
     players: [],
-    isDrawPerformed : false
+    isDrawPerformed : false,
+    drawIntegrity: undefined
   };
   
   export function drawReducer(
@@ -38,15 +40,24 @@ const uuidv4 = require('uuid/v4');
                   matchId: item.matchId
                 }
             }),p],
-            isDrawPerformed: state.isDrawPerformed
+            isDrawPerformed: state.isDrawPerformed,
+            drawIntegrity: state.drawIntegrity
         }
       case DRAW_ACTION_TYPE.PERFORM_DRAW:
         console.log("Performing a draw")
-        //TODO DRAW ALGORITHM
-        const matched_players =  performDraw(JSON.parse(JSON.stringify(state.players)) as Player[])
+        const matched_players =  JSON.parse(JSON.stringify(state.players)) as Player[]
+        let drawResult = performDraw(matched_players)
+        console.log(drawResult)
+        matched_players.forEach(p => {
+            console.log( "id = " + p.id + " match : " + p.matchId)
+
+        })
+
+        console.log("_______")
         return {
-            players: [...state.players],
-            isDrawPerformed: true
+            players: [...matched_players],
+            isDrawPerformed: true,
+            drawIntegrity: drawResult
         };
       case DRAW_ACTION_TYPE.RESET_DRAW:
           console.log("reset draw")
@@ -55,28 +66,3 @@ const uuidv4 = require('uuid/v4');
         return state;
     }
   }
-
-  function performDraw(players: Player[]):Player[] { 
-   /* let matchId = Array.from(new Array(players.length),(val,index)=>index);
-    shuffleArray(matchId)
-    console.log(matchId)
-    players.forEach(p => {
-      for (let i in matchId) {
-        if((matchId[i]>=0) && (matchId[i] != p.id) && (matchId[i] != p.spouseId)){
-          p.matchId = matchId[i]
-          matchId[i] = -1
-          return
-        }
-      }
-    })
-    console.log(players)
-    return players*/
-    return []
- }
-
- function shuffleArray(array: any[] | number[]) {
-  for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-  }
-}

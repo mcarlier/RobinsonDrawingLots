@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom'
-import { Player, drawState } from "../store/draw/types"
+import { drawState } from "../store/draw/types"
 import { addPlayerAction } from "../store/draw/actions";
 import { AppState } from "../store";
 
@@ -54,13 +54,12 @@ class AddPlayerForm extends React.Component<AddPlayerFormProps, { name: string, 
             this.setState({spouseId: undefined})
             if(!this.props.drawState.isDrawPerformed){
                 this.props.addPlayerAction(this.state.name,this.state.haveSpouse,this.state.spouseId)
-              }         
+             }         
         }else{
             alert('Please enter your name before submit');
         }
         event.preventDefault();
       }
-
     render() {
     return (
         <div> 

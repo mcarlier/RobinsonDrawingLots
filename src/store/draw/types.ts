@@ -9,6 +9,7 @@ export interface Player {
   export interface drawState{
     players: Player[];
     isDrawPerformed: boolean;
+    drawIntegrity:boolean | undefined; //Does the draw follow all the rules
   }
   
 // Describing the different ACTION NAMES available
