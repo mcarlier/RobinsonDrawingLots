@@ -1,10 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Mr Robinson Drawing Lots
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `Installation`
+## Installation
 
 to install and run :   
 
@@ -13,7 +9,9 @@ cd RobinsonDrawingLots
 npm install  
 npm start  
 
-### `test`
+then you can see the running app on : http://localhost:3000
+
+## Test
 
 to run tests :  npm test -- --verbose
 
