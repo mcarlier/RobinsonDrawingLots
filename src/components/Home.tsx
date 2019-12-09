@@ -1,5 +1,5 @@
 import React from "react";
-import PerformDrawComponent from "./PerformDrawComponent";
+import ConfigureDrawComponent from "./ConfigureDrawComponent";
 import DisplayDrawComponent from "./DisplayDrawComponent";
 import { connect } from "react-redux";
 import { AppState } from "../store";
@@ -11,7 +11,7 @@ interface HomeProps {
 class Home extends React.Component<HomeProps>{
     render() {
         if(!this.props.isDrawPerformed){
-            return <PerformDrawComponent/>
+            return <ConfigureDrawComponent/>
         }else{
             return <DisplayDrawComponent/>
         }

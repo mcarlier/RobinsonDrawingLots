@@ -2,6 +2,8 @@ import React from "react";
 import Home from './Home';
 import AddPlayerForm from './AddPlayerForm';
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import "./css/App.css";
+
 
 class App extends React.Component{
   render() {

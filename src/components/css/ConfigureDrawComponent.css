@@ -1,0 +1,38 @@
+
+.text-container{
+    margin-top: 4%;
+    margin-left:5%;
+    color: #FCF5ED;
+    font: 6.5rem 'GT-Walsheim-Pro-Bold', Arial, sans-serif; /*18*/
+
+}
+.host-name{
+    color: #ea4e25;
+}
+.secret{
+    color: #FCF5ED;
+    margin-left: 1%;
+
+}
+.configure-draw-buttons-section{
+
+    margin-top: 13%;
+
+}
+
+.host-name span { display:inline-block; animation:float .2s ease-in-out infinite; }
+ @keyframes float {
+  0%,100%{ transform:none; }
+  33%{ transform:translateY(-6px) rotate(-6deg); }
+  66%{ transform:translateY(6px) rotate(6deg); }
+}
+.host-name span:nth-child(0){ animation-delay:.05s; animation-duration: 4s; }
+.host-name span:nth-child(1){ animation-delay:.05s; animation-duration: 4s; }
+.host-name span:nth-child(2){ animation-delay:.05s; animation-duration:4s; }
+.host-name span:nth-child(3){ animation-delay:.1s; animation-duration: 2s; }
+.host-name span:nth-child(4){ animation-delay:.15s;animation-duration: 2s;  }
+.host-name span:nth-child(5){ animation-delay:.2s; animation-duration: 2s; }
+.host-name span:nth-child(6){ animation-delay:.25s;animation-duration: 2s; }
+.host-name span:nth-child(7){ animation-delay:.3s; animation-duration: 2s; }
+.host-name span:nth-child(8){ animation-delay:.3s; animation-duration: 2s; }
+.host-name span:nth-child(9){ animation: none;}

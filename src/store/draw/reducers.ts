@@ -19,7 +19,6 @@ const uuidv4 = require('uuid/v4');
   ): drawState {
     switch (action.type) {
       case DRAW_ACTION_TYPE.ADD_PLAYER:
-          console.log("add player : " + action.data.name)
           let p  = {
             id: uuidv4(),
             name: action.data.name,
@@ -44,23 +43,14 @@ const uuidv4 = require('uuid/v4');
             drawIntegrity: state.drawIntegrity
         }
       case DRAW_ACTION_TYPE.PERFORM_DRAW:
-        console.log("Performing a draw")
         const matched_players =  JSON.parse(JSON.stringify(state.players)) as Player[]
         let drawResult = performDraw(matched_players)
-        console.log(drawResult)
-        matched_players.forEach(p => {
-            console.log( "id = " + p.id + " match : " + p.matchId)
-
-        })
-
-        console.log("_______")
         return {
             players: [...matched_players],
             isDrawPerformed: true,
             drawIntegrity: drawResult
         };
       case DRAW_ACTION_TYPE.RESET_DRAW:
-          console.log("reset draw")
           return initialState
       default:
         return state;

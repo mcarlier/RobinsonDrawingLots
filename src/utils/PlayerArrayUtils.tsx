@@ -86,7 +86,6 @@ export const performDraw = (players: Player[]):boolean =>  {
        matchId = [...matchId,p.id]
     }
     shuffleArray(matchId)
-    console.log(matchId)
     players.forEach(p => {
       for (let i in matchId) {
         if((matchId[i]) && (matchId[i] !== p.id) && (matchId[i] !== p.spouseId || !isSpouseRuleOk)){

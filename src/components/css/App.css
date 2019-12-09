@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+
+@font-face {
+  font-family: 'Helvetica-Light';
+  src: url('../../UI/Helvetica-Light.ttf'); /* IE9 Compat Modes */
+  src: url('../../UI/Helvetica-Light.ttf') format('embedded-opentype'), /* IE6-IE8 */
+       url('../../UI/Helvetica-Light.ttf') format('woff2'), /* Super Modern Browsers */
+       url('../../UI/Helvetica-Light.ttf') format('woff'), /* Pretty Modern Browsers */
+       url('../../UI/Helvetica-Light.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('../../UI/Helvetica-Light.ttf') format('svg'); /* Legacy iOS */
+}
+@font-face {
+  font-family: 'GT-Walsheim-Pro-Bold';
+  src: url('../../UI/GT Walsheim Pro Bold Regular.ttf'); /* IE9 Compat Modes */
+  src: url('../../UI/GT Walsheim Pro Bold Regular.ttf') format('embedded-opentype'), /* IE6-IE8 */
+       url('../../UI/GT Walsheim Pro Bold Regular.ttf') format('woff2'), /* Super Modern Browsers */
+       url('../../UI/GT Walsheim Pro Bold Regular.ttf') format('woff'), /* Pretty Modern Browsers */
+       url('../../UI/GT Walsheim Pro Bold Regular.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('../../UI/GT Walsheim Pro Bold Regular.ttf') format('svg'); /* Legacy iOS */
+}
+
+body {
+  background-image: url('../../UI/BG.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}

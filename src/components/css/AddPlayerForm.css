@@ -1,0 +1,91 @@
+.add-Player-bg{
+    height: 100vh;
+        text-align: center;
+    /*background-color: rgba(252, 245, 237,0.5);*/
+    /*background-color:rgba(234, 78, 37, 0.2);*/
+    background-image: url('../../UI/BG-2.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+.register-title{
+    padding-top: 10%;
+    color: #FCF5ED;
+    font: 4rem 'GT-Walsheim-Pro-Bold', Arial, sans-serif; 
+}
+.robinson{
+    color: #ea4e25;
+
+}
+
+.register-form{
+    margin-top: 3%;
+    height: 300px;
+    background-color: #FCF5ED;
+    margin-left: 30%;
+    margin-right: 30%;
+    font: 1.125rem 'Helvetica-Light', Arial, sans-serif; /*18*/
+    color: #0072BB;
+    position: relative
+}
+.backHome{
+    font: 1.125rem 'Helvetica-Light', Arial, sans-serif; 
+    background-color:transparent;
+    color: #0072BB;
+    border: transparent;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin-bottom: 1%;
+    margin-top: 15%;
+    position: absolute;
+    bottom: 0;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+}
+
+.form-input{
+    margin-top: 5%;
+    margin-left: 3%;
+    width: 300px;
+    height: 30px;
+    border: none;
+	padding: 8px 15px 8px 15px;
+	background: #FCF5ED;
+    color: #0072BB;
+    border-color: #0072BB;
+    border-style: solid;
+    border-width: 1px;
+    font: 1.5rem 'GT-Walsheim-Pro-Bold', Arial, sans-serif; /*18*/
+
+}
+.married-contener{
+    margin-top:5%;
+}
+.checkbox{
+    margin-left: 3%;
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+}
+
+.form-sumbit{
+    position: absolute ;
+    bottom: 5%;
+    left: 0; 
+    right: 0; 
+}
+
+.selectSpouse {
+    margin-top:3%;
+    margin-left:5%;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    font-size: 16px;
+    color: #0072BB;
+    width: 100px;
+    height: 30px;
+  }
+  
